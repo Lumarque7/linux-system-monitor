@@ -1,0 +1,11 @@
+FROM python:3.12-slim
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends procps && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY system_monitor.py .
+
+CMD ["python", "system_monitor.py"]
